@@ -109,3 +109,16 @@ function deleteTaskFromLocalStorage(taskId) {
     const filteredTasks = tasks.filter(task => task.id !== taskId);
     localStorage.setItem('tasks', JSON.stringify(filteredTasks));
 }
+const express = require('express');
+const app = express();
+const path = require('path');
+
+const PORT = process.env.PORT || 3000;
+
+// Definir ruta estática para los archivos HTML, CSS y JS
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Iniciar el servidor en el puerto especificado
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado en el puerto ${PORT}`);
+});
